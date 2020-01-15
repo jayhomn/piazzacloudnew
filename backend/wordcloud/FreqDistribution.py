@@ -17,9 +17,11 @@ custom_stopwords = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ",", ".", 
 # coursecode is specific to the classes that the user takes, however the coursecode must be an exact match to function
 # example coursecodes currently known can be found in data directory
 # RETURNS: function returns a dictionary of the top 30 frequency words found in a particular course(descending order)
-def piazzaDictionaryGenerator(email, password, coursecode):
+def piazza_dictionary_generator(email, password, coursecode):
 
-    stringin = piazza_reader(email, password, coursecode)
+    # get string in using aggregate function
+    # use " ".join(x) to return a string concatenated with the elements of an iterable (the string list)
+    stringin = " ".join(comment_post_aggregate(email, password, coursecode))
 
     # define stop/filler words and punctuation
     stop = stopwords.words('english') + list(string.punctuation) + custom_stopwords
@@ -49,5 +51,5 @@ def piazzaDictionaryGenerator(email, password, coursecode):
 
     return freq_dictionary
 
-# test: print(piazzaDictionaryGenerator("samuel.ip@alumni.ubc.ca", "59170864aS@", "MATH 103.ALL"))
+# print(piazza_dictionary_generator("samuel.ip@alumni.ubc.ca", "59170864aS@", "MATH 103.ALL"))
 
