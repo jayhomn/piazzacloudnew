@@ -8,40 +8,13 @@ import Axios from "axios";
 class LoginComponent extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       username: "",
       password: "",
       success: false
     };
-    this.updateProfile = this.updateProfile.bind(this);
   }
-
-  updateProfile() {
-    Axios.post("http://localhost:8000/userProfile/", {
-      userName: this.state.username,
-      password: this.state.password,
-      success: true
-    })
-      .then(err => console.log(err.data["successLogin"]))
-      .catch(err => console.log("dsds"));
-  }
-
-  advance = () => {
-    this.updateProfile();
-    this.props.history.push("/explore");
-  };
-
-  handleTextFieldChangeUser = e => {
-    this.setState({
-      username: e.target.value
-    });
-  };
-
-  handleTextFieldChangePass = e => {
-    this.setState({
-      password: e.target.value
-    });
-  };
 
   render() {
     return (
