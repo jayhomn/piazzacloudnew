@@ -3,7 +3,7 @@ import React from "react";
 import { Route, withRouter } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import Axios from "axios";
+import { firestore } from "../firebase";
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -14,16 +14,37 @@ class LoginComponent extends React.Component {
       password: "",
       success: false
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTextFieldChangePass = this.handleTextFieldChangePass.bind(this);
+    this.handleTextFieldChangeUser = this.handleTextFieldChangeUser.bind(this);
+    this.uploadToDB = this.uploadToDB.bind(this);
   }
 
   uploadToDB(email, password) {
-    const firestoreDB = this.props.firebase.firestore();
-    firestoreDB.settings({
+    firestore.settings({
       timestampsInSnapshots: true
     });
-    db.collection("users").add({
+    firestore.collection("users").add({
       email: this.state.email,
       password: this.state.password
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.uploadToDB(this.state.email, this.state.password);
+  }
+
+  handleTextFieldChangePass(event) {
+    this.setState({
+      password: event.target.value
+    });
+  }
+
+  handleTextFieldChangeUser(event) {
+    this.setState({
+      email: event.target.value
     });
   }
 
@@ -39,7 +60,7 @@ class LoginComponent extends React.Component {
           padding: "32px"
         }}
       >
-        <form noValidate autoComplete="off">
+        <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
           <div>
             <h1>piazza login</h1>
           </div>
@@ -67,7 +88,8 @@ class LoginComponent extends React.Component {
           </div>
           <div>
             <Button
-              onClick={this.advance}
+              type="submit"
+              onClick={this.handleSubmit}
               style={{
                 marginTop: "24px"
               }}
