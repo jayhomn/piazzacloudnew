@@ -12,7 +12,8 @@ class LoginComponent extends React.Component {
     this.state = {
       email: "",
       password: "",
-      success: false
+      success: false,
+      userReference: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,13 +23,27 @@ class LoginComponent extends React.Component {
   }
 
   uploadToDB(email, password) {
+    var currentRef = this;
+
     firestore.settings({
       timestampsInSnapshots: true
     });
-    firestore.collection("users").add({
-      email: this.state.email,
-      password: this.state.password
-    });
+
+    firestore
+      .collection("users")
+      .add({
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(function(docRef) {
+        currentRef.setState({
+          userReference: docRef.id
+        });
+        console.log(currentRef.state.userReference);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   handleSubmit(event) {
