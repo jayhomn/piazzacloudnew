@@ -24,11 +24,6 @@ class LoginComponent extends React.Component {
 
   uploadToDB(email, password) {
     var currentRef = this;
-
-    firestore.settings({
-      timestampsInSnapshots: true
-    });
-
     firestore
       .collection("users")
       .add({
@@ -39,7 +34,6 @@ class LoginComponent extends React.Component {
         currentRef.setState({
           userReference: docRef.id
         });
-        console.log(currentRef.state.userReference);
       })
       .catch(function(error) {
         console.log(error);
@@ -49,6 +43,7 @@ class LoginComponent extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.uploadToDB(this.state.email, this.state.password);
+    console.log(this.state.userReference);
   }
 
   handleTextFieldChangePass(event) {
@@ -84,7 +79,6 @@ class LoginComponent extends React.Component {
               value={this.state.textFieldValue}
               onChange={this.handleTextFieldChangeUser}
               label="Username"
-              fullWidth="true"
               style={{
                 padding: "8px"
               }}
@@ -95,7 +89,6 @@ class LoginComponent extends React.Component {
               value={this.state.textFieldValue}
               onChange={this.handleTextFieldChangePass}
               label="Password"
-              fullWidth="true"
               style={{
                 padding: "8px"
               }}
