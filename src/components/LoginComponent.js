@@ -10,10 +10,21 @@ class LoginComponent extends React.Component {
     super(props);
 
     this.state = {
-      username: "",
+      email: "",
       password: "",
       success: false
     };
+  }
+
+  uploadToDB(email, password) {
+    const firestoreDB = this.props.firebase.firestore();
+    firestoreDB.settings({
+      timestampsInSnapshots: true
+    });
+    db.collection("users").add({
+      email: this.state.email,
+      password: this.state.password
+    });
   }
 
   render() {
