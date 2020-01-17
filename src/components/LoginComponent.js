@@ -4,8 +4,6 @@ import { Route, withRouter } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { firestore } from "../firebase";
-import { Container } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -82,17 +80,19 @@ class LoginComponent extends React.Component {
             </div>
             <div>
               <TextField
+                color="secondary"
                 fullWidth
                 value={this.state.textFieldValue}
                 onChange={this.handleTextFieldChangeUser}
                 label="Username"
                 style={{
-                  padding: "4px"
+                  padding: "8px"
                 }}
               />
             </div>
             <div>
               <TextField
+                color="secondary"
                 fullWidth
                 value={this.state.textFieldValue}
                 onChange={this.handleTextFieldChangePass}
