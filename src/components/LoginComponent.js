@@ -61,52 +61,64 @@ class LoginComponent extends React.Component {
   render() {
     return (
       <Paper
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "344px",
-          padding: "32px"
-        }}
+        style={{ height: "100vh", width: "100vw", backgroundColor: "#64b5f6" }}
       >
-        <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
-          <div>
-            <h1>piazza login</h1>
-          </div>
-          <div>
-            <TextField
-              value={this.state.textFieldValue}
-              onChange={this.handleTextFieldChangeUser}
-              label="Username"
-              style={{
-                padding: "8px"
-              }}
-            />
-          </div>
-          <div>
-            <TextField
-              value={this.state.textFieldValue}
-              onChange={this.handleTextFieldChangePass}
-              label="Password"
-              style={{
-                padding: "8px"
-              }}
-            />
-          </div>
-          <div>
-            <Button
-              type="submit"
-              onClick={this.handleSubmit}
-              style={{
-                marginTop: "24px"
-              }}
-              variant="outlined"
-            >
-              submit
-            </Button>
-          </div>
-        </form>
+        <Paper
+          elevation={7}
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "344px",
+            padding: "32px"
+          }}
+        >
+          <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
+            <div>
+              <h1>piazza login</h1>
+            </div>
+            <div>
+              <TextField
+                color="secondary"
+                fullWidth
+                value={this.state.textFieldValue}
+                onChange={this.handleTextFieldChangeUser}
+                label="Username"
+                style={{
+                  padding: "8px"
+                }}
+              />
+            </div>
+            <div>
+              <TextField
+                color="secondary"
+                fullWidth
+                value={this.state.textFieldValue}
+                onChange={this.handleTextFieldChangePass}
+                label="Password"
+                style={{
+                  padding: "8px"
+                }}
+              />
+            </div>
+            <div>
+              <Button
+                type="submit"
+                onClick={this.handleSubmit}
+                style={{
+                  marginTop: "24px",
+                  background: "#64b5f6",
+                  color: "white",
+                  border: 0
+                }}
+                variant="outlined"
+              >
+                submit
+              </Button>
+            </div>
+          </form>
+        </Paper>
       </Paper>
     );
   }
