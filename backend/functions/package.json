@@ -1,0 +1,15 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "description": "Backend for writing to db and running python statements through child process",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam Ip",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase-functions": "^3.3.0"
+  }
+}
