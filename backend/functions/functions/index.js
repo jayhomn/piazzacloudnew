@@ -16,6 +16,9 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
  response.send("Hello from Firebase!");
 });
 
+// app.post("/login", login);
+app.post("/login", login);
+
 app.get('/users', (req, res) => {
     db.collection("users")
       .orderBy('email') // we need this to make a query
@@ -41,11 +44,11 @@ exports.api = functions.https.onRequest(app);
 
 
 // probably comment this out rn 
-exports.login = functions.https.onRequest( (req, res) => {
-    const user = {
-        email: request.body.email,
-        password: request.body.password
-    };
+// exports.login = functions.https.onRequest( (req, res) => {
+//     const user = {
+//         email: req.body.email,
+//         password: req.body.password
+//     };
 
-    // admin.firestore().collection('users')
-});
+//     // admin.firestore().collection('users')
+// });
