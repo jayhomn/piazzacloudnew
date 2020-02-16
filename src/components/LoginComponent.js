@@ -42,6 +42,7 @@ class LoginComponent extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    // Validate name here
     this.uploadToDB(this.state.email, this.state.password);
     console.log(this.state.userReference);
   }

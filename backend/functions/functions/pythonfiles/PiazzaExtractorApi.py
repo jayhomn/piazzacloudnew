@@ -147,4 +147,4 @@ def course_hash(email, password):
 
 # print(post_aggregate("samuel.ip@alumni.ubc.ca", "59170864aS@", "STAT 200 921"))
 print(post_aggregate(sys.argv[1], sys.argv[2], "STAT 200 921"))
-return post_aggregate(sys.argv[1], sys.argv[2], "STAT 200 921")
+post_aggregate(sys.argv[1], sys.argv[2], "STAT 200 921")
